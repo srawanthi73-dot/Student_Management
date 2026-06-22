@@ -1,1 +1,2 @@
 print("smile")
+print("manasa")
