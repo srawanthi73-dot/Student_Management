@@ -1,0 +1,29 @@
+name: Upload and Read File
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_name:
+        description: "Enter file name to read"
+        required: true
+        default: "sample.txt"
+
+jobs:
+  read-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Files
+        run: |
+          echo "Files in repository:"
+          ls -R
+
+      - name: Read File Content
+        run: |
+          echo "Reading file: ${{ github.event.inputs.file_name }}"
+          echo "--------------------------------"
+          cat "${{ github.event.inputs.file_name }}"
+          echo "--------------------------------"
